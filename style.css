@@ -1,0 +1,43 @@
+:root { --purple: #630665; --teal: #008080; }
+body { font-family: 'Arial', sans-serif; margin: 0; scroll-behavior: smooth; padding-top: 100px; overflow-x: hidden; }
+
+/* Navigation */
+nav { display: flex; justify-content: space-between; align-items: center; padding: 10px 5%; background: white; position: fixed; top: 0; width: 100%; z-index: 2000; height: 70px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+.nav-left { display: flex; align-items: center; position: relative; }
+.menu-dots { font-size: 32px; cursor: pointer; color: var(--purple); margin-right: 15px; }
+.site-logo { height: 45px; }
+.dropdown-content { display: none; position: absolute; top: 50px; left: 0; background: white; border: 1px solid #ddd; border-radius: 8px; min-width: 140px; }
+nav ul { list-style: none; display: flex; align-items: center; margin: 0; padding: 0; }
+nav ul li { margin-left: 15px; }
+nav ul li a { text-decoration: none; color: #333; font-weight: bold; font-size: 14px; }
+
+/* Modals */
+.admin-modal { display: none; position: fixed; z-index: 3000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
+.admin-box { background: white; margin: 5% auto; padding: 25px; width: 95%; border-radius: 15px; position: relative; text-align: center; }
+.close-admin { position: absolute; right: 20px; top: 10px; font-size: 28px; cursor: pointer; color: var(--purple); }
+.admin-flex-container { display: flex; gap: 20px; flex-wrap: wrap; text-align: left; }
+.admin-col { flex: 1; min-width: 280px; padding: 15px; border: 1px solid #eee; border-radius: 10px; }
+.admin-box input, .admin-box select { width: 90%; padding: 10px; margin: 8px 0; border: 1px solid #ddd; border-radius: 5px; }
+.admin-box button { background: var(--purple); color: white; border: none; padding: 12px; border-radius: 5px; cursor: pointer; width: 95%; font-weight: bold; }
+
+/* Tables */
+.admin-table-container { margin-top: 15px; max-height: 200px; overflow-y: auto; border: 1px solid #eee; }
+table { width: 100%; border-collapse: collapse; font-size: 12px; }
+th { background: var(--purple); color: white; padding: 8px; position: sticky; top: 0; }
+td { padding: 8px; border-bottom: 1px solid #eee; }
+.btn-del-mini { background: #ff4d4d !important; width: auto !important; padding: 4px 8px !important; font-size: 10px; }
+
+/* Video Steps */
+.video-step-item { margin-bottom: 30px; border-bottom: 2px solid #f1f1f1; padding-bottom: 20px; text-align: left; }
+.video-step-item h4 { color: var(--teal); margin-bottom: 10px; }
+
+/* Existing Grids/Sliders */
+.course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 20px; }
+.course-box { background: white; padding: 25px; border: 2px solid var(--purple); border-radius: 20px; text-align: center; transition: 0.3s; }
+.course-box:hover { border-color: var(--teal); }
+.instructor-manual-wrapper { width: 100%; overflow-x: auto; white-space: nowrap; padding: 20px 0; scrollbar-width: none; }
+.instructor-row { display: flex; gap: 20px; padding: 0 5%; }
+.worker-card { width: 240px; flex-shrink: 0; border: 1px solid #eee; border-radius: 20px; padding: 15px; display: inline-block; white-space: normal; text-align: center; }
+.worker-img { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 3px solid var(--teal); }
+footer { background: #333; color: white; padding: 40px 10%; text-align: center; }
+.social-icon { width: 35px; margin: 0 10px; }

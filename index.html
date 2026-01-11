@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SkillBee | Premium Learning</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="nav-left">
+            <div class="menu-dots" onclick="toggleAdminMenu()">&#8942;</div>
+            <img src="logo.png" alt="SkillBee Logo" class="site-logo">
+            <div id="adminMenu" class="dropdown-content">
+                <a href="javascript:void(0)" onclick="openLogin()">Admin Access</a>
+            </div>
+        </div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#highlights">Highlights</a></li>
+            <li><a href="#workers">Instructors</a></li>
+        </ul>
+    </nav>
+
+    <div id="adminModal" class="admin-modal">
+        <div class="admin-box" style="max-width: 850px;">
+            <span class="close-admin" onclick="closeAdmin()">&times;</span>
+            <div id="loginSection">
+                <h3>Admin Login</h3>
+                <input type="text" id="adminUser" placeholder="Username">
+                <input type="password" id="adminPass" placeholder="Password">
+                <button onclick="checkLogin()">Login</button>
+            </div>
+            <div id="managementTab" style="display:none;">
+                <h3 style="color:var(--purple)">SkillBee Control Panel</h3>
+                <div class="admin-flex-container">
+                    <div class="admin-col">
+                        <h4>1. Upload Course Class</h4>
+                        <select id="contentCourse">
+                            <option value="Resin Art">Resin Art</option>
+                            <option value="AI For Teachers">AI For Teachers</option>
+                            <option value="Advanced Graphic Design">Advanced Graphic Design</option>
+                        </select>
+                        <input type="text" id="classTopic" placeholder="Class Title">
+                        <input type="text" id="youtubeLink" placeholder="YouTube Link">
+                        <button onclick="addCourseClass()">Save Class</button>
+                        <div class="admin-table-container">
+                            <table>
+                                <thead><tr><th>Course</th><th>Title</th><th>Action</th></tr></thead>
+                                <tbody id="videoTableBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="admin-col">
+                        <h4>2. Register Student Access</h4>
+                        <input type="text" id="stdUser" placeholder="Username">
+                        <input type="password" id="stdPass" placeholder="Password">
+                        <select id="stdCourse">
+                            <option value="Resin Art">Resin Art</option>
+                            <option value="AI For Teachers">AI For Teachers</option>
+                        </select>
+                        <button onclick="addStudentAccess()">Create Account</button>
+                        <div class="admin-table-container">
+                            <table>
+                                <thead><tr><th>User</th><th>Course</th><th>Action</th></tr></thead>
+                                <tbody id="studentTableBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="studentLoginPortal" class="admin-modal">
+        <div class="admin-box">
+            <span class="close-admin" onclick="closeStudentPortal()">&times;</span>
+            <h3 style="color:var(--purple)">Student Course Portal</h3>
+            <p>Enter your credentials to access classes.</p>
+            <input type="text" id="studentUser" placeholder="Username">
+            <input type="password" id="studentPass" placeholder="Password">
+            <button onclick="verifyStudentLogin()">Login & Start Learning</button>
+        </div>
+    </div>
+
+    <div id="studentClassTab" class="admin-modal">
+        <div class="admin-box" style="max-width: 700px; height: 85vh; overflow-y: auto;">
+            <span class="close-admin" onclick="closeClassTab()">&times;</span>
+            <h3 id="courseWelcomeTitle" style="color:var(--purple)">My Classes</h3>
+            <div id="videoStepList"></div>
+        </div>
+    </div>
+
+    <header id="home" class="hero-section">
+        <div class="hero-content">
+            <h1>Future Skills <br>Start Here</h1>
+            <p>Expert mentors and smart learning systems.</p>
+            <button class="explore-btn" onclick="document.getElementById('courses').scrollIntoView()">Explore Courses</button>
+        </div>
+    </header>
+
+    <section id="courses" class="container">
+        <h2 class="section-title">Available Courses</h2>
+        <div class="course-grid">
+            <div class="course-box"><h3>Resin Art</h3><p class="price">₹3399</p><button onclick="openStudentPortal()">Enroll Now</button></div>
+            <div class="course-box"><h3>AI For Teachers</h3><p class="price">₹1499</p><button onclick="openStudentPortal()">Enroll Now</button></div>
+            <div class="course-box"><h3>Advanced Graphic Design</h3><p class="price">₹2499</p><button onclick="openStudentPortal()">Enroll Now</button></div>
+        </div>
+    </section>
+
+    <section id="highlights">
+        <h2 class="section-title">Moments of Learning</h2>
+        <div class="slider-wrapper">
+            <div class="slider-track">
+                <div class="slide"><img src="h1.png" alt="H1"></div>
+                <div class="slide"><img src="h2.png" alt="H2"></div>
+                <div class="slide"><img src="h3.png" alt="H3"></div>
+                <div class="slide"><img src="h4.png" alt="H4"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="workers" class="container">
+        <h2 class="section-title">Meet Our Instructors</h2>
+        <div class="instructor-manual-wrapper">
+            <div class="instructor-row">
+                <div class="worker-card"><img src="staff1.png" class="worker-img"><h3>Muhammed Muhsin PT</h3><p>CEO</p></div>
+                <div class="worker-card"><img src="staff2.png" class="worker-img"><h3>Rahla Shahid</h3><p>Staff</p></div>
+                <div class="worker-card"><img src="staff3.png" class="worker-img"><h3>Fasna Fabee K</h3><p>Staff</p></div>
+                <div class="worker-card"><img src="staff4.png" class="worker-img"><h3>Kamaruniza</h3><p>Staff</p></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p><strong>SkillBee Learning Platform</strong></p>
+            <p>Kottakkal, Pottippara, Kerala-676503</p>
+            <p>Contact: 7907287563</p>
+            <div class="social-links">
+                <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" class="social-icon"></a>
+                <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" class="social-icon"></a>
+            </div>
+            <p style="font-size: 12px; margin-top: 15px;">&copy; SkillBee | Learn Innovate Achieve</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
