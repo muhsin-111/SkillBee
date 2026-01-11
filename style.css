@@ -7,11 +7,8 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .menu-dots { font-size: 32px; cursor: pointer; color: var(--purple); margin-right: 15px; }
 .site-logo { height: 45px; }
 .dropdown-content { display: none; position: absolute; top: 50px; left: 0; background: white; border: 1px solid #ddd; border-radius: 8px; min-width: 140px; }
-nav ul { list-style: none; display: flex; align-items: center; margin: 0; padding: 0; }
-nav ul li { margin-left: 15px; }
-nav ul li a { text-decoration: none; color: #333; font-weight: bold; font-size: 14px; }
 
-/* Modals */
+/* Modals & Portals */
 .admin-modal { display: none; position: fixed; z-index: 3000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
 .admin-box { background: white; margin: 5% auto; padding: 25px; width: 95%; border-radius: 15px; position: relative; text-align: center; }
 .close-admin { position: absolute; right: 20px; top: 10px; font-size: 28px; cursor: pointer; color: var(--purple); }
@@ -20,24 +17,31 @@ nav ul li a { text-decoration: none; color: #333; font-weight: bold; font-size: 
 .admin-box input, .admin-box select { width: 90%; padding: 10px; margin: 8px 0; border: 1px solid #ddd; border-radius: 5px; }
 .admin-box button { background: var(--purple); color: white; border: none; padding: 12px; border-radius: 5px; cursor: pointer; width: 95%; font-weight: bold; }
 
-/* Tables */
+/* Management Tables */
 .admin-table-container { margin-top: 15px; max-height: 200px; overflow-y: auto; border: 1px solid #eee; }
 table { width: 100%; border-collapse: collapse; font-size: 12px; }
 th { background: var(--purple); color: white; padding: 8px; position: sticky; top: 0; }
 td { padding: 8px; border-bottom: 1px solid #eee; }
 .btn-del-mini { background: #ff4d4d !important; width: auto !important; padding: 4px 8px !important; font-size: 10px; }
 
-/* Video Steps */
+/* Video Steps List */
 .video-step-item { margin-bottom: 30px; border-bottom: 2px solid #f1f1f1; padding-bottom: 20px; text-align: left; }
 .video-step-item h4 { color: var(--teal); margin-bottom: 10px; }
 
-/* Existing Grids/Sliders */
+/* Layout Grid & Sliders */
 .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 20px; }
 .course-box { background: white; padding: 25px; border: 2px solid var(--purple); border-radius: 20px; text-align: center; transition: 0.3s; }
 .course-box:hover { border-color: var(--teal); }
+.slider-wrapper { width: 100vw; position: relative; left: 50%; margin-left: -50vw; overflow: hidden; padding: 40px 0; }
+.slider-track { display: flex; width: fit-content; animation: scrollRight 25s linear infinite; }
+.slide img { width: 280px; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 15px; margin: 0 10px; }
+@keyframes scrollRight { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+
+/* Instructor Manual Slider */
 .instructor-manual-wrapper { width: 100%; overflow-x: auto; white-space: nowrap; padding: 20px 0; scrollbar-width: none; }
 .instructor-row { display: flex; gap: 20px; padding: 0 5%; }
 .worker-card { width: 240px; flex-shrink: 0; border: 1px solid #eee; border-radius: 20px; padding: 15px; display: inline-block; white-space: normal; text-align: center; }
 .worker-img { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 3px solid var(--teal); }
+
 footer { background: #333; color: white; padding: 40px 10%; text-align: center; }
 .social-icon { width: 35px; margin: 0 10px; }
