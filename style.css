@@ -38,3 +38,42 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 
 footer { background: #333; color: white; padding: 40px 10%; text-align: center; }
 .social-icon { width: 35px; margin: 0 10px; }
+:root { --purple: #630665; --teal: #008080; }
+body { font-family: 'Arial', sans-serif; margin: 0; scroll-behavior: smooth; padding-top: 100px; overflow-x: hidden; }
+
+/* Existing Nav, Hero, and Sliders remain exactly the same... */
+nav { display: flex; justify-content: space-between; align-items: center; padding: 10px 5%; background: white; position: fixed; top: 0; width: 100%; z-index: 2000; height: 70px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+.nav-left { display: flex; align-items: center; position: relative; }
+.menu-dots { font-size: 32px; cursor: pointer; color: var(--purple); margin-right: 15px; }
+.site-logo { height: 45px; }
+
+/* Enrollment Info Box Styling - FIXED VISIBILITY */
+.enroll-info-box { 
+    background: linear-gradient(135deg, #630665 0%, #8a2a8c 100%); 
+    padding: 25px; 
+    border-radius: 15px; 
+    margin-bottom: 20px;
+    display: block !important;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(99, 6, 101, 0.2);
+}
+
+.whatsapp-book-btn { 
+    background-color: #25D366 !important; 
+    color: white !important; 
+    border: none; 
+    padding: 12px 25px !important; 
+    border-radius: 50px !important; 
+    cursor: pointer; 
+    font-weight: bold; 
+    font-size: 15px !important;
+    width: auto !important;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+/* Existing Admin/Portal styles... */
+.admin-modal { display: none; position: fixed; z-index: 3000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
+.admin-box { background: white; margin: 5% auto; padding: 25px; width: 90%; border-radius: 15px; position: relative; }
+.admin-box input { width: 90%; padding: 10px; margin: 8px 0; border: 1px solid #ddd; border-radius: 5px; }
+.admin-box button { background: var(--purple); color: white; border: none; padding: 12px; width: 95%; cursor: pointer; border-radius: 5px; font-weight: bold; }

@@ -2,20 +2,35 @@ let courseLessons = [];
 let studentUsers = [];
 let currentSelectedCourse = "";
 
+// Admin & Portal Controls
 function toggleAdminMenu() {
     const menu = document.getElementById('adminMenu');
     menu.style.display = (menu.style.display === "block") ? "none" : "block";
 }
-function openLogin() { document.getElementById('adminModal').style.display = 'block'; document.getElementById('adminMenu').style.display = 'none'; }
+function openLogin() { 
+    document.getElementById('adminModal').style.display = 'block'; 
+    document.getElementById('adminMenu').style.display = 'none'; 
+}
 function closeAdmin() { document.getElementById('adminModal').style.display = 'none'; }
+
+// FIXED: Update Course Name and Show Box
 function openStudentPortal(courseName) { 
     currentSelectedCourse = courseName;
-    document.getElementById('enrollCourseName').innerText = "Enroll in: " + courseName;
+    document.getElementById('enrollCourseName').innerText = "Book: " + courseName;
     document.getElementById('studentLoginPortal').style.display = 'block'; 
 }
+
 function closeStudentPortal() { document.getElementById('studentLoginPortal').style.display = 'none'; }
 function closeClassTab() { document.getElementById('studentClassTab').style.display = 'none'; }
 
+// WhatsApp Booking Redirect
+function bookViaWhatsApp() {
+    const phoneNumber = "917907287563"; 
+    const message = `Hi SkillBee, I want to book the "${currentSelectedCourse}" class. Please send me more details.`;
+    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+}
+
+// Admin Management Functions
 function checkLogin() {
     if(document.getElementById('adminUser').value === "admin" && 
        document.getElementById('adminPass').value === "skillbee2026") {
@@ -23,12 +38,6 @@ function checkLogin() {
         document.getElementById('managementTab').style.display = 'block';
         updateAdminTables();
     } else { alert("Login Failed"); }
-}
-
-function bookViaWhatsApp() {
-    const phoneNumber = "917907287563"; 
-    const message = `Hi SkillBee, I want to book the "${currentSelectedCourse}" class. Please guide me.`;
-    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
 }
 
 function addCourseClass() {
@@ -49,7 +58,7 @@ function addStudentAccess() {
     if(user && pass) {
         studentUsers.push({ id: Date.now(), user, pass, course });
         updateAdminTables();
-        alert("Student Account Created!");
+        alert("Student Registered!");
     }
 }
 
@@ -71,8 +80,13 @@ function verifyStudentLogin() {
         const filtered = courseLessons.filter(l => l.course === student.course);
         document.getElementById('courseWelcomeTitle').innerText = student.course + " - " + student.user;
         const listDiv = document.getElementById('videoStepList');
-        listDiv.innerHTML = filtered.map(l => `<div class="video-step-item"><h4>${l.topic}</h4><iframe width="100%" height="300" src="${l.link}" frameborder="0" allowfullscreen></iframe></div>`).join('');
+        listDiv.innerHTML = filtered.length > 0 ? filtered.map(l => `
+            <div class="video-step-item">
+                <h4>${l.topic}</h4>
+                <iframe width="100%" height="300" src="${l.link}" frameborder="0" allowfullscreen></iframe>
+            </div>
+        `).join('') : "<p>Classes coming soon!</p>";
         closeStudentPortal();
         document.getElementById('studentClassTab').style.display = 'block';
-    } else { alert("Invalid Credentials"); }
+    } else { alert("Login Error: Please check username and password."); }
 }
