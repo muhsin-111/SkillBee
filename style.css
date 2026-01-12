@@ -106,3 +106,32 @@ footer { background: #333; color: white; padding: 40px 10%; text-align: center; 
 }
 
 /* ... All other existing Slider and Instructor styles ... */
+/* ... All previous styles remain the same ... */
+
+/* Enrollment Info Box Styling */
+.enroll-info-box {
+    background: linear-gradient(135deg, var(--purple) 0%, #8a2a8c 100%);
+    padding: 20px;
+    border-radius: 15px;
+    color: white;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.whatsapp-book-btn {
+    background-color: #25D366 !important; /* WhatsApp Green */
+    color: white !important;
+    border: none;
+    padding: 10px 20px !important;
+    border-radius: 50px !important;
+    width: auto !important;
+    font-size: 14px !important;
+    cursor: pointer;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.whatsapp-book-btn:hover {
+    background-color: #128C7E !important;
+    transform: scale(1.05);
+}

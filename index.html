@@ -92,6 +92,23 @@
             <div id="videoStepList"></div>
         </div>
     </div>
+    <div id="studentLoginPortal" class="admin-modal">
+        <div class="admin-box">
+            <span class="close-admin" onclick="closeStudentPortal()">&times;</span>
+            
+            <div class="enroll-info-box">
+                <h4 id="enrollCourseName" style="color:white; margin-bottom:10px;">Course Enrollment</h4>
+                <p style="font-size:13px; margin-bottom:15px;">Join our expert-led sessions and master new skills today!</p>
+                <button class="whatsapp-book-btn" onclick="bookViaWhatsApp()">Book The Class</button>
+            </div>
+
+            <h3 style="color:var(--purple); margin-top:20px;">Student Login</h3>
+            <p style="font-size:12px;">Already enrolled? Enter your credentials below.</p>
+            <input type="text" id="studentUser" placeholder="Username">
+            <input type="password" id="studentPass" placeholder="Password">
+            <button onclick="verifyStudentLogin()">Login & Start Learning</button>
+        </div>
+    </div>
 
 <header id="home" class="hero-section">
         <div class="hero-box">

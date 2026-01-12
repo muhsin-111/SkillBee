@@ -78,4 +78,21 @@ function verifyStudentLogin() {
         closeStudentPortal();
         document.getElementById('studentClassTab').style.display = 'block';
     } else { alert("Access Denied"); }
+
+let currentSelectedCourse = "";
+
+// Open Portal and set the course name
+function openStudentPortal(courseName) { 
+    currentSelectedCourse = courseName;
+    document.getElementById('enrollCourseName').innerText = "Enroll in: " + courseName;
+    document.getElementById('studentLoginPortal').style.display = 'block'; 
 }
+
+// WhatsApp Booking Function
+function bookViaWhatsApp() {
+    const phoneNumber = "917907287563"; 
+    const message = `Hi SkillBee, I am interested in booking the "${currentSelectedCourse}" class. Please provide more details.`;
+    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+}
+
+/* ... Existing Admin, Login, and Delete functions remain exactly the same ... */}
