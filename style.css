@@ -41,3 +41,37 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 /* Footer */
 footer { background: #333; color: white; padding: 40px 10%; text-align: center; }
 .social-icon { width: 35px; margin: 0 10px; }
+/* ... All previous styles remain the same ... */
+
+/* Instructor Dots Styling */
+.dot-container {
+    text-align: center;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.dot {
+    height: 12px;
+    width: 12px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: var(--purple); /* #630665 */
+    width: 25px; /* Makes the active dot slightly longer */
+    border-radius: 10px;
+}
+
+/* Ensure smooth manual scrolling for dot tracking */
+.instructor-manual-wrapper {
+    scroll-snap-type: x mandatory;
+}
+
+.worker-card {
+    scroll-snap-align: center;
+}

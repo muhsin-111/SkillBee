@@ -76,3 +76,24 @@ function verifyStudentLogin() {
         document.getElementById('studentClassTab').style.display = 'block';
     } else { alert("Login Error."); }
 }
+/* ... Keep all existing Admin and Student Portal logic ... */
+
+// Instructor Dot Slider Logic
+const slider = document.getElementById('instructorSlider');
+const dots = document.querySelectorAll('.dot');
+
+slider.addEventListener('scroll', () => {
+    const scrollLeft = slider.scrollLeft;
+    const cardWidth = slider.querySelector('.worker-card').offsetWidth + 20; // card + gap
+    const activeIndex = Math.round(scrollLeft / cardWidth);
+
+    dots.forEach((dot, index) => {
+        if (index === activeIndex) {
+            dot.classList.add('active');
+        } else {
+            dot.classList.remove('active');
+        }
+    });
+});
+
+/* ... Rest of your original script.js (verifyStudentLogin, addCourseClass, etc.) ... */
