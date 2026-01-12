@@ -2,6 +2,25 @@ let courseLessons = [];
 let studentUsers = [];
 let currentSelectedCourse = "";
 
+// Dot Slider Logic
+window.addEventListener('DOMContentLoaded', () => {
+    const slider = document.getElementById('instructorSlider');
+    const dots = document.querySelectorAll('.dot');
+
+    if(slider) {
+        slider.addEventListener('scroll', () => {
+            const scrollLeft = slider.scrollLeft;
+            const cardWidth = slider.querySelector('.worker-card').offsetWidth + 20;
+            const activeIndex = Math.round(scrollLeft / cardWidth);
+
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === activeIndex);
+            });
+        });
+    }
+});
+
+// Admin Controls
 function toggleAdminMenu() {
     const menu = document.getElementById('adminMenu');
     menu.style.display = (menu.style.display === "block") ? "none" : "block";
@@ -10,7 +29,7 @@ function openLogin() { document.getElementById('adminModal').style.display = 'bl
 function closeAdmin() { document.getElementById('adminModal').style.display = 'none'; }
 function openStudentPortal(courseName) { 
     currentSelectedCourse = courseName;
-    document.getElementById('enrollCourseName').innerText = "Book: " + courseName;
+    document.getElementById('enrollCourseName').innerText = "Enroll in: " + courseName;
     document.getElementById('studentLoginPortal').style.display = 'block'; 
 }
 function closeStudentPortal() { document.getElementById('studentLoginPortal').style.display = 'none'; }
@@ -18,7 +37,7 @@ function closeClassTab() { document.getElementById('studentClassTab').style.disp
 
 function bookViaWhatsApp() {
     const phoneNumber = "917907287563"; 
-    const message = `Hi SkillBee, I want to book the "${currentSelectedCourse}" class. Please send more details.`;
+    const message = `Hi SkillBee, I want to book the "${currentSelectedCourse}" class.`;
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
 }
 
@@ -38,7 +57,7 @@ function addCourseClass() {
     if(topic && link) {
         courseLessons.push({ id: Date.now(), course, topic, link });
         updateAdminTables();
-        alert("Class Saved!");
+        alert("Class Saved! Use 'embed' links for YouTube.");
     }
 }
 
@@ -49,15 +68,15 @@ function addStudentAccess() {
     if(user && pass) {
         studentUsers.push({ id: Date.now(), user, pass, course });
         updateAdminTables();
-        alert("Student Created!");
+        alert("Student Registered!");
     }
 }
 
 function updateAdminTables() {
     const vBody = document.getElementById('videoTableBody');
-    vBody.innerHTML = courseLessons.map(l => `<tr><td>${l.course}</td><td>${l.topic}</td><td><button onclick="deleteLesson(${l.id})">Del</button></td></tr>`).join('');
+    vBody.innerHTML = courseLessons.map(l => `<tr><td>${l.course}</td><td>${l.topic}</td><td><button class="btn-del-mini" onclick="deleteLesson(${l.id})">Del</button></td></tr>`).join('');
     const sBody = document.getElementById('studentTableBody');
-    sBody.innerHTML = studentUsers.map(s => `<tr><td>${s.user}</td><td>${s.course}</td><td><button onclick="deleteStudent(${s.id})">Del</button></td></tr>`).join('');
+    sBody.innerHTML = studentUsers.map(s => `<tr><td>${s.user}</td><td>${s.course}</td><td><button class="btn-del-mini" onclick="deleteStudent(${s.id})">Del</button></td></tr>`).join('');
 }
 
 function deleteLesson(id) { courseLessons = courseLessons.filter(l => l.id !== id); updateAdminTables(); }
@@ -67,33 +86,18 @@ function verifyStudentLogin() {
     const u = document.getElementById('studentUser').value;
     const p = document.getElementById('studentPass').value;
     const student = studentUsers.find(s => s.user === u && s.pass === p);
+
     if(student) {
         const filtered = courseLessons.filter(l => l.course === student.course);
         document.getElementById('courseWelcomeTitle').innerText = student.course + " - " + student.user;
         const listDiv = document.getElementById('videoStepList');
-        listDiv.innerHTML = filtered.length > 0 ? filtered.map(l => `<div class="video-step-item"><h4>${l.topic}</h4><iframe width="100%" height="300" src="${l.link}" frameborder="0" allowfullscreen></iframe></div>`).join('') : "<p>Classes coming soon!</p>";
+        listDiv.innerHTML = filtered.length > 0 ? filtered.map(l => `
+            <div class="video-step-item">
+                <h4>${l.topic}</h4>
+                <iframe width="100%" height="300" src="${l.link}" frameborder="0" allowfullscreen></iframe>
+            </div>
+        `).join('') : "<p>No classes uploaded yet.</p>";
         closeStudentPortal();
         document.getElementById('studentClassTab').style.display = 'block';
-    } else { alert("Login Error."); }
+    } else { alert("Invalid Username or Password"); }
 }
-/* ... Keep all existing Admin and Student Portal logic ... */
-
-// Instructor Dot Slider Logic
-const slider = document.getElementById('instructorSlider');
-const dots = document.querySelectorAll('.dot');
-
-slider.addEventListener('scroll', () => {
-    const scrollLeft = slider.scrollLeft;
-    const cardWidth = slider.querySelector('.worker-card').offsetWidth + 20; // card + gap
-    const activeIndex = Math.round(scrollLeft / cardWidth);
-
-    dots.forEach((dot, index) => {
-        if (index === activeIndex) {
-            dot.classList.add('active');
-        } else {
-            dot.classList.remove('active');
-        }
-    });
-});
-
-/* ... Rest of your original script.js (verifyStudentLogin, addCourseClass, etc.) ... */
