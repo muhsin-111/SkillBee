@@ -45,3 +45,64 @@ td { padding: 8px; border-bottom: 1px solid #eee; }
 
 footer { background: #333; color: white; padding: 40px 10%; text-align: center; }
 .social-icon { width: 35px; margin: 0 10px; }
+/* ... All previous Navigation and Variable styles ... */
+
+.hero-section { 
+    padding: 60px 5%; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    min-height: 400px;
+}
+
+.hero-box { 
+    background: linear-gradient(135deg, #630665 0%, #8a2a8c 100%); /* Light purple gradient */
+    padding: 50px; 
+    border-radius: 30px; 
+    text-align: center; 
+    color: white; 
+    width: 90%; 
+    max-width: 800px;
+    box-shadow: 0 15px 35px rgba(99, 6, 101, 0.3);
+}
+
+.hero-box h1 { 
+    font-size: 3rem; 
+    line-height: 1.2; 
+    margin-bottom: 15px; 
+}
+
+.hero-box p { 
+    font-size: 1.2rem; 
+    margin-bottom: 30px; 
+    opacity: 0.9; 
+}
+
+.hero-explore-btn { 
+    background-color: #008080; /* Teal background */
+    color: white; 
+    border: none; 
+    padding: 15px 40px; 
+    border-radius: 50px; /* Fully rounded */
+    cursor: pointer; 
+    font-weight: bold; 
+    font-size: 16px; 
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 128, 128, 0.4);
+}
+
+.hero-explore-btn:hover {
+    background-color: #006666;
+    transform: translateY(-3px);
+}
+
+/* Maintain Course Box #630665 Outline */
+.course-box { 
+    background: white; 
+    padding: 25px; 
+    border: 2px solid #630665; 
+    border-radius: 20px; 
+    text-align: center; 
+}
+
+/* ... All other existing Slider and Instructor styles ... */
