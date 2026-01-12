@@ -1,137 +1,40 @@
 :root { --purple: #630665; --teal: #008080; }
 body { font-family: 'Arial', sans-serif; margin: 0; scroll-behavior: smooth; padding-top: 100px; overflow-x: hidden; }
 
-/* Navigation */
 nav { display: flex; justify-content: space-between; align-items: center; padding: 10px 5%; background: white; position: fixed; top: 0; width: 100%; z-index: 2000; height: 70px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
 .nav-left { display: flex; align-items: center; position: relative; }
 .menu-dots { font-size: 32px; cursor: pointer; color: var(--purple); margin-right: 15px; }
 .site-logo { height: 45px; }
-.dropdown-content { display: none; position: absolute; top: 50px; left: 0; background: white; border: 1px solid #ddd; border-radius: 8px; min-width: 140px; }
 
-/* Modals & Portals */
+/* Hero Gradient Box */
+.hero-section { padding: 60px 5%; display: flex; justify-content: center; align-items: center; }
+.hero-box { background: linear-gradient(135deg, #630665 0%, #8a2a8c 100%); padding: 50px; border-radius: 30px; text-align: center; color: white; width: 90%; max-width: 800px; box-shadow: 0 15px 35px rgba(99, 6, 101, 0.3); }
+.hero-explore-btn { background-color: var(--teal); color: white; border: none; padding: 15px 40px; border-radius: 50px; cursor: pointer; font-weight: bold; margin-top: 20px; }
+
+/* Enrollment Info Box */
+.enroll-info-box { background: linear-gradient(135deg, var(--purple) 0%, #8a2a8c 100%); padding: 20px; border-radius: 15px; color: white; margin-bottom: 20px; }
+.whatsapp-book-btn { background-color: #25D366 !important; color: white !important; border: none; padding: 10px 20px !important; border-radius: 50px !important; cursor: pointer; font-weight: bold; }
+
+/* Admin & Portal Modals */
 .admin-modal { display: none; position: fixed; z-index: 3000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
-.admin-box { background: white; margin: 5% auto; padding: 25px; width: 95%; border-radius: 15px; position: relative; text-align: center; }
-.close-admin { position: absolute; right: 20px; top: 10px; font-size: 28px; cursor: pointer; color: var(--purple); }
+.admin-box { background: white; margin: 5% auto; padding: 25px; width: 90%; border-radius: 15px; position: relative; text-align: center; }
 .admin-flex-container { display: flex; gap: 20px; flex-wrap: wrap; text-align: left; }
 .admin-col { flex: 1; min-width: 280px; padding: 15px; border: 1px solid #eee; border-radius: 10px; }
 .admin-box input, .admin-box select { width: 90%; padding: 10px; margin: 8px 0; border: 1px solid #ddd; border-radius: 5px; }
-.admin-box button { background: var(--purple); color: white; border: none; padding: 12px; border-radius: 5px; cursor: pointer; width: 95%; font-weight: bold; }
+.admin-box button { background: var(--purple); color: white; border: none; padding: 12px; width: 95%; cursor: pointer; border-radius: 5px; }
 
-/* Management Tables */
-.admin-table-container { margin-top: 15px; max-height: 200px; overflow-y: auto; border: 1px solid #eee; }
-table { width: 100%; border-collapse: collapse; font-size: 12px; }
-th { background: var(--purple); color: white; padding: 8px; position: sticky; top: 0; }
-td { padding: 8px; border-bottom: 1px solid #eee; }
-.btn-del-mini { background: #ff4d4d !important; width: auto !important; padding: 4px 8px !important; font-size: 10px; }
-
-/* Video Steps List */
-.video-step-item { margin-bottom: 30px; border-bottom: 2px solid #f1f1f1; padding-bottom: 20px; text-align: left; }
-.video-step-item h4 { color: var(--teal); margin-bottom: 10px; }
-
-/* Layout Grid & Sliders */
+/* Sliders & Grid */
 .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 20px; }
-.course-box { background: white; padding: 25px; border: 2px solid var(--purple); border-radius: 20px; text-align: center; transition: 0.3s; }
-.course-box:hover { border-color: var(--teal); }
-.slider-wrapper { width: 100vw; position: relative; left: 50%; margin-left: -50vw; overflow: hidden; padding: 40px 0; }
-.slider-track { display: flex; width: fit-content; animation: scrollRight 25s linear infinite; }
-.slide img { width: 280px; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 15px; margin: 0 10px; }
+.course-box { background: white; padding: 25px; border: 2px solid var(--purple); border-radius: 20px; text-align: center; }
+.slider-wrapper { overflow: hidden; padding: 40px 0; }
+.slider-track { display: flex; animation: scrollRight 25s linear infinite; }
+.slide img { width: 280px; margin: 0 10px; border-radius: 15px; }
 @keyframes scrollRight { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
 
-/* Instructor Manual Slider */
 .instructor-manual-wrapper { width: 100%; overflow-x: auto; white-space: nowrap; padding: 20px 0; scrollbar-width: none; }
 .instructor-row { display: flex; gap: 20px; padding: 0 5%; }
-.worker-card { width: 240px; flex-shrink: 0; border: 1px solid #eee; border-radius: 20px; padding: 15px; display: inline-block; white-space: normal; text-align: center; }
+.worker-card { width: 240px; flex-shrink: 0; border: 1px solid #eee; border-radius: 20px; padding: 15px; text-align: center; display: inline-block; vertical-align: top; white-space: normal; }
 .worker-img { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 3px solid var(--teal); }
 
 footer { background: #333; color: white; padding: 40px 10%; text-align: center; }
 .social-icon { width: 35px; margin: 0 10px; }
-/* ... All previous Navigation and Variable styles ... */
-
-.hero-section { 
-    padding: 60px 5%; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    min-height: 400px;
-}
-
-.hero-box { 
-    background: linear-gradient(135deg, #630665 0%, #8a2a8c 100%); /* Light purple gradient */
-    padding: 50px; 
-    border-radius: 30px; 
-    text-align: center; 
-    color: white; 
-    width: 90%; 
-    max-width: 800px;
-    box-shadow: 0 15px 35px rgba(99, 6, 101, 0.3);
-}
-
-.hero-box h1 { 
-    font-size: 3rem; 
-    line-height: 1.2; 
-    margin-bottom: 15px; 
-}
-
-.hero-box p { 
-    font-size: 1.2rem; 
-    margin-bottom: 30px; 
-    opacity: 0.9; 
-}
-
-.hero-explore-btn { 
-    background-color: #008080; /* Teal background */
-    color: white; 
-    border: none; 
-    padding: 15px 40px; 
-    border-radius: 50px; /* Fully rounded */
-    cursor: pointer; 
-    font-weight: bold; 
-    font-size: 16px; 
-    transition: 0.3s;
-    box-shadow: 0 5px 15px rgba(0, 128, 128, 0.4);
-}
-
-.hero-explore-btn:hover {
-    background-color: #006666;
-    transform: translateY(-3px);
-}
-
-/* Maintain Course Box #630665 Outline */
-.course-box { 
-    background: white; 
-    padding: 25px; 
-    border: 2px solid #630665; 
-    border-radius: 20px; 
-    text-align: center; 
-}
-
-/* ... All other existing Slider and Instructor styles ... */
-/* ... All previous styles remain the same ... */
-
-/* Enrollment Info Box Styling */
-.enroll-info-box {
-    background: linear-gradient(135deg, var(--purple) 0%, #8a2a8c 100%);
-    padding: 20px;
-    border-radius: 15px;
-    color: white;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-.whatsapp-book-btn {
-    background-color: #25D366 !important; /* WhatsApp Green */
-    color: white !important;
-    border: none;
-    padding: 10px 20px !important;
-    border-radius: 50px !important;
-    width: auto !important;
-    font-size: 14px !important;
-    cursor: pointer;
-    font-weight: bold;
-    display: inline-block;
-}
-
-.whatsapp-book-btn:hover {
-    background-color: #128C7E !important;
-    transform: scale(1.05);
-}

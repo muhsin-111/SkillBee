@@ -55,8 +55,8 @@
                     </div>
                     <div class="admin-col">
                         <h4>2. Register Student Access</h4>
-                        <input type="text" id="stdUser" placeholder="Assign Username">
-                        <input type="password" id="stdPass" placeholder="Assign Password">
+                        <input type="text" id="stdUser" placeholder="Username">
+                        <input type="password" id="stdPass" placeholder="Password">
                         <select id="stdCourse">
                             <option value="Resin Art">Resin Art</option>
                             <option value="AI For Teachers">AI For Teachers</option>
@@ -77,11 +77,17 @@
     <div id="studentLoginPortal" class="admin-modal">
         <div class="admin-box">
             <span class="close-admin" onclick="closeStudentPortal()">&times;</span>
-            <h3 style="color:var(--purple)">Student Course Portal</h3>
-            <p>Enter your credentials to access classes.</p>
+            
+            <div class="enroll-info-box">
+                <h4 id="enrollCourseName">Course Enrollment</h4>
+                <p>Join our expert-led sessions today!</p>
+                <button class="whatsapp-book-btn" onclick="bookViaWhatsApp()">Book The Class</button>
+            </div>
+
+            <h3 style="color:var(--purple)">Student Login</h3>
             <input type="text" id="studentUser" placeholder="Username">
             <input type="password" id="studentPass" placeholder="Password">
-            <button onclick="verifyStudentLogin()">Login & Start Learning</button>
+            <button onclick="verifyStudentLogin()">Login & Access Classes</button>
         </div>
     </div>
 
@@ -92,25 +98,8 @@
             <div id="videoStepList"></div>
         </div>
     </div>
-    <div id="studentLoginPortal" class="admin-modal">
-        <div class="admin-box">
-            <span class="close-admin" onclick="closeStudentPortal()">&times;</span>
-            
-            <div class="enroll-info-box">
-                <h4 id="enrollCourseName" style="color:white; margin-bottom:10px;">Course Enrollment</h4>
-                <p style="font-size:13px; margin-bottom:15px;">Join our expert-led sessions and master new skills today!</p>
-                <button class="whatsapp-book-btn" onclick="bookViaWhatsApp()">Book The Class</button>
-            </div>
 
-            <h3 style="color:var(--purple); margin-top:20px;">Student Login</h3>
-            <p style="font-size:12px;">Already enrolled? Enter your credentials below.</p>
-            <input type="text" id="studentUser" placeholder="Username">
-            <input type="password" id="studentPass" placeholder="Password">
-            <button onclick="verifyStudentLogin()">Login & Start Learning</button>
-        </div>
-    </div>
-
-<header id="home" class="hero-section">
+    <header id="home" class="hero-section">
         <div class="hero-box">
             <h1>Future Skills <br>Start Here</h1>
             <p>Expert mentors and smart learning systems.</p>
@@ -121,9 +110,9 @@
     <section id="courses" class="container">
         <h2 class="section-title">Available Courses</h2>
         <div class="course-grid">
-            <div class="course-box"><h3>Resin Art</h3><p class="price">₹3399</p><button onclick="openStudentPortal()">Enroll Now</button></div>
-            <div class="course-box"><h3>AI For Teachers</h3><p class="price">₹1499</p><button onclick="openStudentPortal()">Enroll Now</button></div>
-            <div class="course-box"><h3>Advanced Graphic Design</h3><p class="price">₹2499</p><button onclick="openStudentPortal()">Enroll Now</button></div>
+            <div class="course-box"><h3>Resin Art</h3><p class="price">₹3399</p><button onclick="openStudentPortal('Resin Art')">Enroll Now</button></div>
+            <div class="course-box"><h3>AI For Teachers</h3><p class="price">₹1499</p><button onclick="openStudentPortal('AI For Teachers')">Enroll Now</button></div>
+            <div class="course-box"><h3>Advanced Graphic Design</h3><p class="price">₹2499</p><button onclick="openStudentPortal('Advanced Graphic Design')">Enroll Now</button></div>
         </div>
     </section>
 
@@ -157,7 +146,7 @@
             <p>Kottakkal, Pottippara, Kerala-676503</p>
             <p>Contact: 7907287563</p>
             <div class="social-links">
-                <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" class="social-icon"></a>
+                <a href="https://wa.me/917907287563" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" class="social-icon"></a>
                 <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" class="social-icon"></a>
             </div>
             <p style="font-size: 12px; margin-top: 15px;">&copy; SkillBee | Learn Innovate Achieve</p>

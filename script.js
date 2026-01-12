@@ -1,18 +1,21 @@
 let courseLessons = [];
 let studentUsers = [];
+let currentSelectedCourse = "";
 
-// Navigation & Modals
 function toggleAdminMenu() {
     const menu = document.getElementById('adminMenu');
     menu.style.display = (menu.style.display === "block") ? "none" : "block";
 }
 function openLogin() { document.getElementById('adminModal').style.display = 'block'; document.getElementById('adminMenu').style.display = 'none'; }
 function closeAdmin() { document.getElementById('adminModal').style.display = 'none'; }
-function openStudentPortal() { document.getElementById('studentLoginPortal').style.display = 'block'; }
+function openStudentPortal(courseName) { 
+    currentSelectedCourse = courseName;
+    document.getElementById('enrollCourseName').innerText = "Enroll in: " + courseName;
+    document.getElementById('studentLoginPortal').style.display = 'block'; 
+}
 function closeStudentPortal() { document.getElementById('studentLoginPortal').style.display = 'none'; }
 function closeClassTab() { document.getElementById('studentClassTab').style.display = 'none'; }
 
-// Admin Actions
 function checkLogin() {
     if(document.getElementById('adminUser').value === "admin" && 
        document.getElementById('adminPass').value === "skillbee2026") {
@@ -20,6 +23,12 @@ function checkLogin() {
         document.getElementById('managementTab').style.display = 'block';
         updateAdminTables();
     } else { alert("Login Failed"); }
+}
+
+function bookViaWhatsApp() {
+    const phoneNumber = "917907287563"; 
+    const message = `Hi SkillBee, I want to book the "${currentSelectedCourse}" class. Please guide me.`;
+    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
 }
 
 function addCourseClass() {
@@ -40,27 +49,20 @@ function addStudentAccess() {
     if(user && pass) {
         studentUsers.push({ id: Date.now(), user, pass, course });
         updateAdminTables();
-        alert("Student Created!");
+        alert("Student Account Created!");
     }
 }
 
 function updateAdminTables() {
     const vBody = document.getElementById('videoTableBody');
-    vBody.innerHTML = courseLessons.map(l => `
-        <tr><td>${l.course}</td><td>${l.topic}</td>
-        <td><button class="btn-del-mini" onclick="deleteLesson(${l.id})">Del</button></td></tr>
-    `).join('');
+    vBody.innerHTML = courseLessons.map(l => `<tr><td>${l.course}</td><td>${l.topic}</td><td><button onclick="deleteLesson(${l.id})">Del</button></td></tr>`).join('');
     const sBody = document.getElementById('studentTableBody');
-    sBody.innerHTML = studentUsers.map(s => `
-        <tr><td>${s.user}</td><td>${s.course}</td>
-        <td><button class="btn-del-mini" onclick="deleteStudent(${s.id})">Del</button></td></tr>
-    `).join('');
+    sBody.innerHTML = studentUsers.map(s => `<tr><td>${s.user}</td><td>${s.course}</td><td><button onclick="deleteStudent(${s.id})">Del</button></td></tr>`).join('');
 }
 
 function deleteLesson(id) { courseLessons = courseLessons.filter(l => l.id !== id); updateAdminTables(); }
 function deleteStudent(id) { studentUsers = studentUsers.filter(s => s.id !== id); updateAdminTables(); }
 
-// Student View Logic
 function verifyStudentLogin() {
     const u = document.getElementById('studentUser').value;
     const p = document.getElementById('studentPass').value;
@@ -69,30 +71,8 @@ function verifyStudentLogin() {
         const filtered = courseLessons.filter(l => l.course === student.course);
         document.getElementById('courseWelcomeTitle').innerText = student.course + " - " + student.user;
         const listDiv = document.getElementById('videoStepList');
-        listDiv.innerHTML = filtered.length > 0 ? filtered.map(l => `
-            <div class="video-step-item">
-                <h4>${l.topic}</h4>
-                <iframe width="100%" height="300" src="${l.link}" frameborder="0" allowfullscreen></iframe>
-            </div>
-        `).join('') : "<p>No classes uploaded yet.</p>";
+        listDiv.innerHTML = filtered.map(l => `<div class="video-step-item"><h4>${l.topic}</h4><iframe width="100%" height="300" src="${l.link}" frameborder="0" allowfullscreen></iframe></div>`).join('');
         closeStudentPortal();
         document.getElementById('studentClassTab').style.display = 'block';
-    } else { alert("Access Denied"); }
-
-let currentSelectedCourse = "";
-
-// Open Portal and set the course name
-function openStudentPortal(courseName) { 
-    currentSelectedCourse = courseName;
-    document.getElementById('enrollCourseName').innerText = "Enroll in: " + courseName;
-    document.getElementById('studentLoginPortal').style.display = 'block'; 
+    } else { alert("Invalid Credentials"); }
 }
-
-// WhatsApp Booking Function
-function bookViaWhatsApp() {
-    const phoneNumber = "917907287563"; 
-    const message = `Hi SkillBee, I am interested in booking the "${currentSelectedCourse}" class. Please provide more details.`;
-    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
-}
-
-/* ... Existing Admin, Login, and Delete functions remain exactly the same ... */}
