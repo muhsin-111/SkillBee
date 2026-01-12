@@ -77,17 +77,13 @@
     <div id="studentLoginPortal" class="admin-modal">
         <div class="admin-box" style="max-width: 450px;">
             <span class="close-admin" onclick="closeStudentPortal()">&times;</span>
-            
             <div class="enroll-info-box">
-                <h4 id="enrollCourseName" style="color:white; margin:0 0 10px 0;">Join This Course</h4>
-                <p style="font-size:13px; color:white; margin-bottom:15px;">Book your seat now to start learning with our experts!</p>
+                <h4 id="enrollCourseName">Join This Course</h4>
+                <p>Book your seat now to start learning!</p>
                 <button class="whatsapp-book-btn" onclick="bookViaWhatsApp()">Book The Class</button>
             </div>
-
-            <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
-
-            <h3 style="color:var(--purple)">Student Login</h3>
-            <p style="font-size:12px; margin-bottom:15px;">Already have an account? Login below.</p>
+            <hr style="margin:20px 0; border:0; border-top:1px solid #eee;">
+            <h3>Student Login</h3>
             <input type="text" id="studentUser" placeholder="Username">
             <input type="password" id="studentPass" placeholder="Password">
             <button onclick="verifyStudentLogin()">Login & Access Classes</button>
@@ -113,9 +109,34 @@
     <section id="courses" class="container">
         <h2 class="section-title">Available Courses</h2>
         <div class="course-grid">
-            <div class="course-box"><h3>Resin Art</h3><p class="price">₹3399</p><button onclick="openStudentPortal('Resin Art')">Enroll Now</button></div>
-            <div class="course-box"><h3>AI For Teachers</h3><p class="price">₹1499</p><button onclick="openStudentPortal('AI For Teachers')">Enroll Now</button></div>
-            <div class="course-box"><h3>Advanced Graphic Design</h3><p class="price">₹2499</p><button onclick="openStudentPortal('Advanced Graphic Design')">Enroll Now</button></div>
+            <div class="course-box"><h3>Resin Art</h3><p class="price">₹3399</p><button class="enroll-btn-teal" onclick="openStudentPortal('Resin Art')">Enroll Now</button></div>
+            <div class="course-box"><h3>AI For Teachers</h3><p class="price">₹1499</p><button class="enroll-btn-teal" onclick="openStudentPortal('AI For Teachers')">Enroll Now</button></div>
+            <div class="course-box"><h3>Advanced Graphic Design</h3><p class="price">₹2499</p><button class="enroll-btn-teal" onclick="openStudentPortal('Advanced Graphic Design')">Enroll Now</button></div>
+        </div>
+    </section>
+
+    <section id="highlights">
+        <h2 class="section-title">Moments of Learning</h2>
+        <div class="slider-wrapper">
+            <div class="slider-track">
+                <div class="slide"><img src="h1.png" alt="H1"></div>
+                <div class="slide"><img src="h2.png" alt="H2"></div>
+                <div class="slide"><img src="h3.png" alt="H3"></div>
+                <div class="slide"><img src="h4.png" alt="H4"></div>
+                <div class="slide"><img src="h1.png" alt="H1"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="workers" class="container">
+        <h2 class="section-title">Meet Our Instructors</h2>
+        <div class="instructor-manual-wrapper">
+            <div class="instructor-row">
+                <div class="worker-card"><img src="staff1.png" class="worker-img"><h3>Muhammed Muhsin PT</h3><p>CEO</p></div>
+                <div class="worker-card"><img src="staff2.png" class="worker-img"><h3>Rahla Shahid</h3><p>Staff</p></div>
+                <div class="worker-card"><img src="staff3.png" class="worker-img"><h3>Fasna Fabee K</h3><p>Staff</p></div>
+                <div class="worker-card"><img src="staff4.png" class="worker-img"><h3>Kamaruniza</h3><p>Staff</p></div>
+            </div>
         </div>
     </section>
 
@@ -126,6 +147,8 @@
             <p>Contact: 7907287563</p>
             <div class="social-links">
                 <a href="https://wa.me/917907287563" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" class="social-icon"></a>
+                <a href="https://www.youtube.com/channel/UCi3f4uOp5awNVZzb-Us8OrA" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" class="social-icon"></a>
+                <a href="https://www.instagram.com/skillbee__?igsh=MjltazNrNTBmem0y" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" class="social-icon"></a>
             </div>
             <p style="font-size: 12px; margin-top: 15px;">&copy; SkillBee | Learn Innovate Achieve</p>
         </div>
